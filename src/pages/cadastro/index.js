@@ -16,12 +16,19 @@ export default function Login(){
     const navigation = useNavigation();
     const[email, setEmail] = useState('')
     const[password, setPassword] = useState('')
+    const[nome, setNome] = useState('')
     const { signed, signIn, } = useContext(AuthContext);        
 
     return(
         <View style={styles.containerPrincipal}>
             <Text style={styles.txtTitulo}>QR Social</Text>
             <View style={{margin: 10}}>
+                <TextInput
+                    style={{borderBottomColor: 'black', borderBottomWidth: 1}}
+                    placeholder='nome'
+                    value={nome}
+                    onChangeText={text => setNome(text)}                    
+                />                             
                 <TextInput
                     style={{borderBottomColor: 'black', borderBottomWidth: 1}}
                     placeholder='usuario'
@@ -36,13 +43,13 @@ export default function Login(){
                     secureTextEntry
                 />                             
                 <View style={styles.containerBtn}>
-                    <TouchableOpacity style={styles.btnLogin} onPress={() => signIn(email, password)}>
-                        <Text style={{color: "white", fontSize:18, fontWeight:'bold'}}>Login</Text>
+                    <TouchableOpacity style={styles.btnLogin} onPress={() => assinaturas.signUp(email, password, nome)}>
+                        <Text style={{color: "white", fontSize:18, fontWeight:'bold'}}>Cadastrar</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={{justifyContent:'center', alignItems:'center', margin: 10}}>
-                    <TouchableOpacity onPress={() => navigation.navigate('Cadastro')}>
-                        <Text>CRIAR</Text>
+                    <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+                        <Text>VOLTAR</Text>
                     </TouchableOpacity>
                 </View>
             </View>

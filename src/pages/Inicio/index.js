@@ -10,15 +10,14 @@ export default function Inicio(){
 
     useEffect(()=>{
         async function carregarLista(){
-            await firebase.database().ref('instagram')
-            .limitToFirst(3)
+            await firebase.database().ref('usuario')            
             .on('value', (snapshot)=>{
                 setVerInstagram([]);
                 
                 snapshot.forEach((childItem) => {
                     let list = {
                         key: childItem.key,
-                        instagram: childItem.val().instagram
+                        usuario: childItem.val().nome
                     };                
 
                     setVerInstagram(oldArray => [...oldArray, list]);
@@ -43,47 +42,38 @@ export default function Inicio(){
                 </View>
                 <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center'}}>
                     <View style={styles.containerLinks}>                        
-                    <Icon name="logo-instagram" size={50}/>
-                        <Text>Instagram</Text>
-                        {/* <Text>{data.verInstagram}</Text> */}
+                        <Icon name="logo-instagram" size={50}/>
+                        <Text>Instagram</Text>                        
                     </View>
                     <View style={styles.containerLinks}>
-                    <Icon name="md-logo-facebook" size={50}/>
-                    <Text>Facebook</Text>
+                        <Icon name="md-logo-facebook" size={50}/>
+                        <Text>Facebook</Text>
                     </View>
                 </View>
                 <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center'}}>
                     <View style={styles.containerLinks}>
-                    <Icon name="md-logo-linkedin" size={50}/>
+                        <Icon name="md-logo-linkedin" size={50}/>
                         <Text>Linkedin</Text>
                     </View>
                     <View style={styles.containerLinks}>
-                    <Icon name="md-logo-linkedin" size={50}/>
-                    <Text>Horóscopo</Text>
+                        <Icon name="md-logo-linkedin" size={50}/>
+                        <Text>Horóscopo</Text>
                     </View>
                 </View>
                 <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center'}}>
                     <View style={styles.containerLinks}>
-                    <Icon name="logo-whatsapp" size={50}/>
+                        <Icon name="logo-whatsapp" size={50}/>
                         <Text>WhatsApp</Text>
                     </View>
                     <View style={styles.containerLinks}>
-                    <Icon name="book-sharp" size={50}/>
-                    <Text>Currículo</Text>
+                        <Icon name="book-sharp" size={50}/>
+                        <Text>Currículo</Text>
                     </View>
                 </View>
             </View>            
-            {/*
-            <View>
-                
-                <Lista                   
-                    data ={verFilmes}
-                    keyExtractor={ item => item.key}
-                    renderItem={({ item }) => ( <ListaFilmes data={item}/> )}
-                />
-                
-            </View>
-            */}
+            
+
+           
 
         </ContainerPrincipal>
     );

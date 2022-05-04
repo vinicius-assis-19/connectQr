@@ -5,7 +5,7 @@ import {
 } from 'react-native'
 import AuthContext from '../context/auth';
 
-export default function CriandoLogin(email, senha){    
+export default function CriandoLogin(email){    
     firebase.auth().createUserWithEmailAndPassword(email, senha)
     .then((userCredential) => {
         let user = userCredential.user                
